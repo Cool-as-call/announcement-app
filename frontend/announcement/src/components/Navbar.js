@@ -5,6 +5,7 @@ export const Navbar=()=>{
         <dev className="navbar">
         <Link to="/">Home</Link>
         <Link to="/auth">Login</Link>
+        
         </dev>
     )
 }

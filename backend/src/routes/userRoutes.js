@@ -40,7 +40,7 @@ userRouter.post('/login', async (req,res) => {
         
         return res.json({message:"passworld not registered!"})
       } 
-      const token= jwt.sing({id:user._id},"secret")
+      const token= jwt.sign({id:user._id},"secret")
       res.json({token,userID:user._id})
 })
 
