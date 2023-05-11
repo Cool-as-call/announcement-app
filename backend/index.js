@@ -9,5 +9,5 @@ app.use(cors());
 app.use("/auth",userRouter);
 
 app.use(express.json());
-mongoose.connect("mongodb+srv://nadab:beya@announcement.n9qoqty.mongodb.net/announcement")
+mongoose.connect("mongodb+srv://nadanfaidh6:naddoucha@cluster0.fo7zt7j.mongodb.net/Cluster0")
 app.listen(4000,() => console.log('server listening on 4000'));
