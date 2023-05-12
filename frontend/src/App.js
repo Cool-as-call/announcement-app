@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2c6ab9418c410c602f57f60f158e83cdeea13339
 import './App.css';
 import {BrowserRouter, Routes,Route} from 'react-router-dom';
 import Home from './pages/home';
@@ -8,6 +12,7 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
+<<<<<<< HEAD
       
       <Navbar />
       <Routes>
@@ -20,6 +25,8 @@ function App() {
       
      
     </Routes>
+=======
+>>>>>>> 2c6ab9418c410c602f57f60f158e83cdeea13339
     
     </div>
     </BrowserRouter>
