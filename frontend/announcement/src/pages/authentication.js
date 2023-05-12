@@ -7,8 +7,8 @@ import{useNavigate} from "react-router-dom"
 export const Authentication =()=>{
     return(
         <div className="auth">
-           <Login />
            <Register />
+           <Login />
         </div>
     )
 };
@@ -16,11 +16,11 @@ export const Authentication =()=>{
 // to evoide the repetion for  the form of login and register 
 export const Form =({username,setUsername,password,setpassword ,label,onSubmit})=>{
     return(
-        <div className="register">
+        <div className="authentication">
             
             <form onSubmit={onSubmit}>
             <h1>{label}</h1>
-                <div>
+                <div className="form" >
                     <label htmlFor="username">User Name</label>
                 <input type="text"
                  className="username"
@@ -43,6 +43,31 @@ export const Form =({username,setUsername,password,setpassword ,label,onSubmit})
     )
 };
 
+
+
+
+
+
+const Register=()=>{
+   const [username,setUsername]=useState("")
+    const [password,setpassword]=useState("")
+
+    const onSubmit= async (event)=>{
+        event.preventDefault()
+       try{
+        await axios.post("http://localhost:4000/auth/register",{username,password});
+        alert("Registration completed");
+
+       }
+       catch(err){
+        console.log(err);
+}    }
+    return(
+            
+        <Form username={username} setUsername={setUsername} password={password} setpassword={setpassword}
+         label={"Register"} onSubmit={onSubmit}/>
+    )
+};
 
 
 const Login=()=>{
@@ -73,29 +98,4 @@ const Login=()=>{
         <Form username={username} setUsername={setUsername} password={password} setpassword={setpassword } 
     label={"Login"} onSubmit={onSubmit}/>
     )};
-
-
-
-const Register=()=>{
-   const [username,setUsername]=useState("")
-    const [password,setpassword]=useState("")
-
-    const onSubmit= async (event)=>{
-        event.preventDefault()
-       try{
-        await axios.post("http://localhost:4000/auth/register",{username,password});
-        alert("Registration completed");
-
-       }
-       catch(err){
-        console.log(err);
-}    }
-    return(
-            
-        <Form username={username} setUsername={setUsername} password={password} setpassword={setpassword}
-         label={"Register"} onSubmit={onSubmit}/>
-    )
-};
-
-
 
