@@ -6,14 +6,14 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import Updateannouncement from "./updateAnnouncement";
+import CreateAnnouncement from "./createAnnouncement";
+import { Link, useLocation } from "react-router-dom";
+import UpdateAnnouncement from "./UpdateAnnouncement";
 
  const Home=()=>{
     const [announcements, setAnnouncements] = useState([]);
+    const [updateAnnouncement, setUpdateAnnouncement] = useState({})
     
-  
-    
-  
     useEffect(() => {
       const fetchAnnouncements = async () => {
         try {
@@ -26,8 +26,6 @@ import Updateannouncement from "./updateAnnouncement";
       };
       fetchAnnouncements();
     }, []);
-  
-
     
     const deleteAnnouncement = async (announcementName) => {
       try {
@@ -38,18 +36,20 @@ import Updateannouncement from "./updateAnnouncement";
         console.log(err);
       }
     };
-    
-    
+
+
+    const handleUpdateAnnouncement = (announcement) => {
+      setUpdateAnnouncement(announcement);
+    };
+
   
-    return (
-      
+   return ( 
+    <div>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        <h1>All Announcements</h1>
-        
+        <h2> All Announcements</h2>
           {announcements.map((announcement) => (
-            <div key={announcement.announcementName} style={{ flex: "0 0 25%" }}>
-        
-              
+      <div key={announcement.announcementName} style={{ flex: "0 0 25%" }}>
+                     
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
@@ -71,15 +71,24 @@ import Updateannouncement from "./updateAnnouncement";
 
               <p>Phone Number: {announcement.phoneNumber}</p>
               <button onClick={() => deleteAnnouncement(announcement.announcementName)}>&times;</button>
-              <button onClick={() => deleteAnnouncement(announcement.announcementName)}>&times;</button>
-              </CardContent>
+              <button onClick={() => handleUpdateAnnouncement(announcement)}>Update</button>
+               </CardContent>
             </CardActionArea>
           </Card>
         </div>
           ))}
-          
-        
       </div>
+     </div>
     );
 }
 export default Home;
+
+
+
+/*
+<div className="content">
+<Link to="/createAnnouncement">
+  <button>Create Announcement</button>
+</Link>
+</div>
+*/

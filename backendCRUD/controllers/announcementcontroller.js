@@ -33,9 +33,8 @@ module.exports.saveAnnouncement = async (req, res) => {
 
 module.exports.updateAnnouncement = async (req, res) => {
   try {
-    const { descriptions } = req.body;
-    const announcementName = req.params.announcementName;
-    const result = await announ.updateOne({ announcementName }, { descriptions });
+    const { descriptions, imageURL, phoneNumber} = req.body;
+    const result = await announ.updateOne({ announcementName: req.params.announcementName }, { descriptions, imageURL, phoneNumber });
     console.log(result);
     res.send(result);
   } catch (err) {
