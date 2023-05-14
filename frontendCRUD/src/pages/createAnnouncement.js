@@ -18,9 +18,11 @@ setAnnouncement({...announcement,[name]:value})
      }
 
 
-     
+    const handleClick =()=> {
+      window.location.href = 'http://localhost:3000/';
+    }     
 
-/*
+ /* 
      const handeleDescriptionsChange=(event,index)=>{
         const {value}=event.target
         const ing=announcement.descriptions
@@ -29,7 +31,7 @@ setAnnouncement({...announcement,[name]:value})
         console.log(announcement)
              }
      
-     
+   
 
      const addDescription=()=>{
         setAnnouncement({...announcement,descriptions:[...announcement.descriptions,""]})
@@ -54,6 +56,7 @@ setAnnouncement({...announcement,[name]:value})
             <form onSubmit={onSubmit}>
             <h2>
             Create Announcement  </h2>
+            
               <div className="user-box">
                 <label htmlFor="announcementName"></label>
                 <input 
@@ -94,7 +97,7 @@ setAnnouncement({...announcement,[name]:value})
                 placeholder="Phone Number"/>
               </div>
 
-                <button onClick={onSubmit} type="submit">Create Announcement</button>
+                <button onClick={() => {onSubmit(),handleClick()}} type="submit">Create Announcement</button>
               
             </form>
      
